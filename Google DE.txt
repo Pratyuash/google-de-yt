@@ -208,3 +208,12 @@ maxResults: 1
 
 ** Install Postman in VS Code (Extension and then sign in)
 
+**
+Now we have PlaylistID and Video IDs. Now we want to extract the required statistics.
+To do that we will again need to get a new url from YouTube API explorer--> Videos--> list
+Details to be filled:
+part: contentDetails + snippet + statistics
+playlistID: UUX6OQ3DkcsbYNE6H8uQQuVA
+maxResults: 1
+
+https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&part=statistics&id=0e3GPea1Tyg&key=[YOUR_API_KEY]
