@@ -148,6 +148,7 @@ git add .
 git commit -m "add .gitignore file"  
 git push
 
+
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -217,3 +218,68 @@ playlistID: UUX6OQ3DkcsbYNE6H8uQQuVA
 maxResults: 1
 
 https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippet&part=statistics&id=0e3GPea1Tyg&key=[YOUR_API_KEY]
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Docker:
+
+**
+Basics
+Docker-- Docker is a tool that helps us package, ship, and run applications inside containers.
+Docker Image-- A Docker image is a blueprint. It defines what goes into container
+Container-- A container is like a lightweight mini-computer that includes: Application, Dependencies (libraries, tools), Runtime (like Node.js, Python, etc.)
+Docker file-- A docker file is a script containing a series of instructions on how to build your custom Docker Image.
+
+Why Docker is useful
+Consistency: Runs the same everywhere
+Easy setup: No need to install dependencies manually
+Isolation: Apps don’t conflict with each other
+Scalability: Works great with cloud & microservices
+
+Registry is where we store Docker images that have been built by others, like airflow docker.
+Docker Hub is an image registry
+Link: https://hub.docker.com/repositories/pratyuash
+Username: Pratyuash
+password: Welcome)JZ*7906
+
+
+
+** 
+Building and pushing a docker image:
+
+Create a repository: yt_api_elt
+Start Docker Desktop in system.
+
+Now in VS Code inside D:\Projects\Google Data Engineering Project: 
+Create a file 'dockerfile' and write the arguments (see the file)
+Create a requirements.txt file and leave it blank
+Now in VS code terminal
+Login: docker login -u Pratyuash
+Build image: docker build -t pratyuash/yt_api_elt:1.0.0 .
+push docker image to repo:  docker push pratyuash/yt_api_elt:1.0.0 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Airflow:
+Airflow is used to schedule and run DE pipelines (orchestration).
+It is built on python. So Airflow lets us define workflows as code (Python). These workflows are called DAG.
+A DAG is basically: A set of tasks, with dependencies, that run in a specific order.
+
+Key components
+Scheduler-- Decides when tasks should run
+Executor-- Actually runs the tasks. Can run locally or on multiple machines
+Web UI-- A dashboard where you can: See DAGs, Trigger runs, Debug failures
+Metadata Database-- Stores: Task status, Logs, History
+
+** See .env file where airflow requirements are defined.
+
+** Fernet Key: Used to encrypt and decrypt sensitive data stored in metadata database.
+** generating Fernet Key:
+
+from cyptography.fernet import fernet
+
+fernet_key = Fernet.generate_key()
+print(fernet_key.decode())
