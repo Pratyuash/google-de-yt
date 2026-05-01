@@ -292,3 +292,10 @@ It is required to deploy airflow in docker compose.
 
 In D:\Projects\Google Data Engineering Project folder, create a folder named Docker/Postgres and paste a file 'init-multiple-databases.sh'
 Also add docker-compose.yaml in D:\Projects\Google Data Engineering Project.
+
+>> Spinning up docker-compose:
+run: docker compose up -d 
+run: docker ps 					--to check if the containers are running or not.
+run: docker exec -it airflow-scheduler bash	--to access scheduler container
+run: docker compose up -d --build 		--to update/rebuild containers/services without stopping other services
+run: docker compose down
