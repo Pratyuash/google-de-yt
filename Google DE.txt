@@ -1,0 +1,130 @@
+Google DE--
+=========================================================
+
+
+Resource Used:
+Docker
+API: YouTube API Key
+VS Code
+Soda
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> API Key:
+
+
+API: Application Programming Interface
+It is a set of rules that allows different software systems to communicate and exchange data with each other.
+User sends request to API server using API key. That request is processed in application's database/server and response is sent back to the user if API is valid.
+
+**
+Getting YouTube API Key:
+
+Login to Google Developer Console (https://console.cloud.google.com/projectselector2/apis/dashboard?pli=1&supportedpurview=project)
+Create Project--> Name: YouTubeAPIProject--> Parent Resource: No Organization--> Create
+From Left Menu--> Select APIs & Services--> Library
+Scroll down and select YouTube DATA API v3--> Enable--> Create Credentials--> Choose Public Data--> Next--> Restrict
+A new window will open--> Under APIs that can be accessed using this key: YouTube Data API v3
+Save--> Click on Public Data--> Done
+
+API Key: AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50
+
+This API Key can be found in Credentials Tab under APIs & Services in left menu.
+It should not be shared with anyone. And once project is completed, it should be deleted.
+
+
+
+**
+Creating a URL for YouTube API:
+To be able to connect to YouTube resource via API through Python script, we will need a URL.
+To build the URL:
+Open YouTube API documentation--> developers.google.com/youtube/v3/docs
+From left menu choose Videos--> list (We are specifically choosing Videos because the resource for our project is a video)
+A form will open in right--> expand it
+Request Parameters---
+Part: Statistics
+id: 0e3GPea1Tyg
+Scroll down and ensure only API Key is checked
+Execute
+
+We should get a 200 response. This means the URL is successful.
+
+From right tab copy the URL under 'curl'
+'https://youtube.googleapis.com/youtube/v3/videos?part=statistics&id=0e3GPea1Tyg&key=[YOUR_API_KEY]' 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+**
+Google Cloud Shell:
+It is a code editor just like VS Code. We can write and run our code from here
+However, currently has some restrictions like 5GB of space and 50hrs of usage per week.
+
+To open it--> Inside Google Developer--> On top right--> Click on the 'PowerShell' type icon
+Once the PowerShell open--> from top menu--> Open Editor--> A VS Code type of window will open.
+The PowerShell was Google Cloud Shell and the Editor is Google Cloud Shell Editor.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Setting up Git Remote:
+
+First open GitHub and create a new repository-- https://github.com/Pratyuash/google-de-yt
+As soon as you create the repository and open it, a page with set of commands will be displayed with title "…or create a new repository on the command line".
+Follow the commands in VS Code.
+
+echo "# google-de-yt" >> README.md							-- creates a README file with repo name inside it
+git init										-- initializes the repo
+git add README.md
+git commit -m "added readme file with repo name in it"
+git branch -M main									-- sets default branch
+git remote add origin https://github.com/Pratyuash/google-de-yt.git			-- links whatever we do locally to git repo online (remote connection)
+git push -u origin main									-- pushes the changes done locally to online git repo
+
+Open VS Code--> From top menu--> New Terminal
+cd D:\Projects\Google Data Engineering Project
+Run the above commands here
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Creating Virtual Environment:
+
+A virtual environment is required to protect the project/code against upgrades which are not backward compatible.
+It means, if we created a project which was written in, for ex, Python 3.4, and after sometime python got upgraded to 3.10. Then if 3.10 is does not supports the libraries of 3.4, the codes written in the project will fail. As 1 env can only have 1 version, to protect the old projects and still have updated version, we can create Virtual Environments and keep different versions separately.
+
+** Creating Virtual Env (venv):
+
+In VS code under D:\Projects\Google Data Engineering Project--
+python -m venv v_env				(It will take some time to download the updates, if any)
+python -m venv v_env --without-pip
+v_env\Scripts\activate
+python -m ensurepip
+v_env\Scripts\Activate.ps1			-- Activate virtual env
+
+Now from here we can download any libraries required using pip.
+Incase we need to move out of v_env we can simply type "deactivate"
+
+**
+Now once v_env is set, we can see in VS code over 800 files will be shows ready to be pushed to git repo.
+But these files are of virtual env and is not required to be pushed to our git.
+So to ensure none of the v_env file gets pushed we must create a git ignore file.
+
+In D:\Projects\Google Data Engineering Project--> create a file ".gitignore"
+Inside it write v_env/ and then save it.
+We can also add __pycache__/ to .gitignore as this file will be created once we start running our python code.
+
+__pycache__ is created automatically by Python where Python compiles our codes/scripts into bytecode which is a more machine efficient code and it helps python to execute codes faster.
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
