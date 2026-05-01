@@ -185,3 +185,26 @@ url = f"https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&f
 
 ** To explode json, we need to add extension "json crack" in VS code
 ** video_stats.json is created manually and the data added is of result print(json.dumps(data, indent=4))  from video_stats.py file
+
+** 
+Now as we can see, our script has API key directly in the code. As this is a sensitive info, we can not have it exposed in the code block.
+To do that we will create a .env file
+.env file is a simple and safe way to keep all the sensitive information and then use the .env file in the script.
+And to use the .env file in python we need to install env module and import it in the script
+
+v_env\Scripts\Activate.ps1
+python -m pip install python-dotenv
+
+
+**
+Till here we have extracted the PlaylistID. Now we will extract Video IDs
+To do that we will again need to get a new url from YouTube API explorer--> PlaylistID--> list
+Details to be filled:
+part: contentDetails
+playlistID: UUX6OQ3DkcsbYNE6H8uQQuVA
+maxResults: 1
+
+'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUX6OQ3DkcsbYNE6H8uQQuVA&key=AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50'
+
+** Install Postman in VS Code (Extension and then sign in)
+
