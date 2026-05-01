@@ -283,3 +283,12 @@ from cyptography.fernet import fernet
 
 fernet_key = Fernet.generate_key()
 print(fernet_key.decode())
+
+
+Docker compose is a YAML file that allows you to define and run multiple Docker containers with a single command.
+Airflow provides a docker compose file that you can customise as per our needs.
+docker-compose.yaml file can be found on https://airflow.apache.org/docs/apache-airflow/stable/howto/docker-compose/index.html#fetching-docker-compose-yaml
+It is required to deploy airflow in docker compose.
+
+In D:\Projects\Google Data Engineering Project folder, create a folder named Docker/Postgres and paste a file 'init-multiple-databases.sh'
+Also add docker-compose.yaml in D:\Projects\Google Data Engineering Project.
