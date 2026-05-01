@@ -12,6 +12,27 @@ Soda
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+>> Analysis our Project:
+
+In this project we are goin to extract some statistics from Mr Beasts YouTube video using YouTube API key.
+
+Statistics:
+video_id
+title
+publishedAt
+duration
+viewCount
+likeCount
+commentCount
+
+
+**
+Hurdles: We need to first get Mr. Beast's Playlist ID and from that we need to get unique Video IDs for each video and then we can get the desired statistics.
+We can use Russian Doll Analogy to understand this Hurdle (Just for Business Purpose).
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
 >> API Key:
 
 
@@ -121,10 +142,46 @@ We can also add __pycache__/ to .gitignore as this file will be created once we 
 
 __pycache__ is created automatically by Python where Python compiles our codes/scripts into bytecode which is a more machine efficient code and it helps python to execute codes faster.
 
+As we have created files, we need to ensure the same has been done to git repo
+So in VS code, in D:\Projects\Google Data Engineering Project, run
+git add .              
+git commit -m "add .gitignore file"  
+git push
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+>> Data Extraction:
+
+First we need to get the Playlist ID. Before that we need 'request' lib to be installed.
+Run: python -m pip install requests 
+Run: pip list
+
+Create a python script (.py) file in D:\Projects\Google Data Engineering Project where we will write our code-- video_stats.py
+
+Now before we move ahead, we need the URL for YouTube's channel to get the Playlist ID.
+Go to https://console.cloud.google.com/
+Select youtubeapiproject from top
+From left menu select APIs & Services--> Library
+Choose YouTube DATA API v3--> Use this API
+A new window will open--> in that window from left menu select "Channels"--> list--> From right menu API Explorer--> U can expand it to full screen--> Fill in the details
+
+part: contentDetails
+forHandle: MrBeast
+
+An URL will be created on right under curl:
+https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=MrBeast&key=[YOUR_API_KEY]
+
+Recreate is with you own API key before adding it to the script:
+https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=MrBeast&key=AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50
+
+Or better we can use variables
+API_KEY = "AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50"
+CHANNEL_HANDLE = "MrBeast"
+url = f"https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=(CHANNEL_HANDLE)&key=(API_KEY)
 
 
+** See video_stats.py for whole code block
 
+** To explode json, we need to add extension "json crack" in VS code
+** video_stats.json is created manually and the data added is of result print(json.dumps(data, indent=4))  from video_stats.py file
