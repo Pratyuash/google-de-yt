@@ -314,6 +314,22 @@ run: env | grep AIRFLOW_VAR
 
 Make required changes to videos_stats.py
 Create another python file (main.py) and store it in dags, not under api.
+Here the actual DAG is created (see file main.py).
+
+**
+To be able to run it we need to make changes in YAML file.
+-- Changes made:
+In airflow-init block of YAML:
+
+        # DELETE OR COMMENT OUT THE TWO LINES BELOW:
+        # mkdir -p /sources/dags /sources/data /sources/include /sources/logs /sources/tests
+        # chown -R "${AIRFLOW_UID}:0" /sources/{dags,data,include,logs,tests}
+
+
+Once done.. in VS code terminal check:
+run: docker exec -it airflow-webserver bash
+run: airflow dags list		(it should show the dag created by dag_id name)
+
 
 
 
