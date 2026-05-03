@@ -299,3 +299,21 @@ run: docker ps 					--to check if the containers are running or not.
 run: docker exec -it airflow-scheduler bash	--to access scheduler container
 run: docker compose up -d --build 		--to update/rebuild containers/services without stopping other services
 run: docker compose down
+
+
+>> Creating  Airflow DAG:
+
+First create a folder 'api' under 'dags' folder. Put the videos_stats.py script in the api folder.
+The folders dags, include, logs, plugin and tests were created automatically when we spinned up docker.
+
+Now we need to turn our python code into Airflow task. This can be done using python decorators. (add @tasks before each function in python code).
+
+Start docker desktop, then run docker compose up -d
+run: docker exec -it airflow-webserver bash
+run: env | grep AIRFLOW_VAR
+
+Make required changes to videos_stats.py
+Create another python file (main.py) and store it in dags, not under api.
+
+
+
