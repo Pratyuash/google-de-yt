@@ -332,4 +332,21 @@ run: airflow dags list		(it should show the dag created by dag_id name)
 
 
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+>> Data Loading:
+
+Steps to be performed--
+-- Create tables/schemas in Postgres data warehouse
+-- Create functions that will simulate Inserts, Updates and Deletes
+-- Create functions to perform required transformations from staging to refined layer
+
+
+** To connect the services(docker, airflow) to postgres database, we will use airflow feature called hooks. Specifically Postgres Hooks
+** Connection-- Used to establish the connection to the Postgres instance
+** Cursor-- An object that allows to execute SQL commands for the connection.
+
+
+
 
