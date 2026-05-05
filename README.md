@@ -1,7 +1,7 @@
 ## google-de-yt
 ### YouTube Data Engineering Project:
 
->> Analysis our Project:
+>> Analysis of the Project:
 
 In this project we are goin to extract some statistics from Mr Beasts YouTube video using YouTube API key.
 
@@ -22,7 +22,7 @@ We can use Russian Doll Analogy to understand this Hurdle (Just for Business Pur
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> API Key:
+>> ##### API Key:
 
 
 API: Application Programming Interface
@@ -81,7 +81,7 @@ The PowerShell was Google Cloud Shell and the Editor is Google Cloud Shell Edito
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> Setting up Git Remote:
+>> ##### Setting up Git Remote:
 
 First open GitHub and create a new repository-- https://github.com/Pratyuash/google-de-yt
 As soon as you create the repository and open it, a page with set of commands will be displayed with title "…or create a new repository on the command line".
@@ -141,7 +141,7 @@ git push
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> Data Extraction:
+>> ##### Data Extraction:
 
 First we need to get the Playlist ID. Before that we need 'request' lib to be installed.
 Run: python -m pip install requests 
@@ -163,10 +163,10 @@ An URL will be created on right under curl:
 https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=MrBeast&key=[YOUR_API_KEY]
 
 Recreate is with you own API key before adding it to the script:
-https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=MrBeast&key=AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50
+https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=MrBeast&key=[YOUR_API_KEY]
 
 Or better we can use variables
-API_KEY = "AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50"
+API_KEY = "[YOUR_API_KEY]"
 CHANNEL_HANDLE = "MrBeast"
 url = f"https://youtube.googleapis.com/youtube/v3/channels?part=contentDetails&forHandle=(CHANNEL_HANDLE)&key=(API_KEY)
 
@@ -194,7 +194,7 @@ part: contentDetails
 playlistID: UUX6OQ3DkcsbYNE6H8uQQuVA
 maxResults: 1
 
-'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUX6OQ3DkcsbYNE6H8uQQuVA&key=AIzaSyD2VPvMm26687XhT2nUKD0NaoDcAOeBD50'
+'https://youtube.googleapis.com/youtube/v3/playlistItems?part=contentDetails&maxResults=1&playlistId=UUX6OQ3DkcsbYNE6H8uQQuVA&key=[YOUR_API_KEY]'
 
 ** Install Postman in VS Code (Extension and then sign in)
 
@@ -212,7 +212,7 @@ https://youtube.googleapis.com/youtube/v3/videos?part=contentDetails&part=snippe
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> Docker:
+>> ##### Docker:
 
 **
 Basics
@@ -231,7 +231,7 @@ Registry is where we store Docker images that have been built by others, like ai
 Docker Hub is an image registry
 Link: https://hub.docker.com/repositories/pratyuash
 Username: Pratyuash
-password: Welcome)JZ*7906
+
 
 
 
@@ -252,7 +252,7 @@ push docker image to repo:  docker push pratyuash/yt_api_elt:1.0.0
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> Airflow:
+>> ##### Airflow:
 Airflow is used to schedule and run DE pipelines (orchestration).
 It is built on python. So Airflow lets us define workflows as code (Python). These workflows are called DAG.
 A DAG is basically: A set of tasks, with dependencies, that run in a specific order.
@@ -324,7 +324,7 @@ run: airflow dags list		(it should show the dag created by dag_id name)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
->> Data Loading:
+>> ##### Data Loading:
 
 Steps to be performed--
 -- Create tables/schemas in Postgres data warehouse
